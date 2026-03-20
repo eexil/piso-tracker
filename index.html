@@ -14,53 +14,29 @@
     --accent: #2d6a4f;
     --accent-light: #e8f4ee;
     --danger: #c0392b;
-    --warning: #e67e22;
     --tag-bg: #eef7f2;
     --tag-text: #1a4a32;
     --font: 'Segoe UI', system-ui, sans-serif;
     --radius: 12px;
     --shadow: 0 2px 8px rgba(0,0,0,0.08);
   }
-
   * { box-sizing: border-box; margin: 0; padding: 0; }
-
-  body {
-    font-family: var(--font);
-    background: var(--bg);
-    color: var(--text);
-    min-height: 100vh;
-  }
+  body { font-family: var(--font); background: var(--bg); color: var(--text); min-height: 100vh; }
 
   header {
-    background: var(--surface);
-    border-bottom: 1px solid var(--border);
-    padding: 1rem 1.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-    flex-wrap: wrap;
-    position: sticky;
-    top: 0;
-    z-index: 100;
+    background: var(--surface); border-bottom: 1px solid var(--border);
+    padding: 1rem 1.5rem; display: flex; align-items: center;
+    justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+    position: sticky; top: 0; z-index: 100;
   }
-
   .logo { font-size: 1.1rem; font-weight: 600; color: var(--accent); letter-spacing: -0.3px; }
   .logo span { color: var(--muted); font-weight: 400; font-size: 0.85rem; margin-left: 8px; }
-
   .header-actions { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
 
   button {
-    font-family: var(--font);
-    font-size: 0.85rem;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    background: var(--surface);
-    color: var(--text);
-    padding: 6px 14px;
-    cursor: pointer;
-    transition: all 0.15s;
-    white-space: nowrap;
+    font-family: var(--font); font-size: 0.85rem; border: 1px solid var(--border);
+    border-radius: 8px; background: var(--surface); color: var(--text);
+    padding: 6px 14px; cursor: pointer; transition: all 0.15s; white-space: nowrap;
   }
   button:hover { background: var(--bg); }
   button.primary { background: var(--accent); color: #fff; border-color: var(--accent); }
@@ -70,279 +46,147 @@
   button.danger:hover { background: #fdf2f1; }
 
   .setup-banner {
-    background: #fff8e6;
-    border: 1px solid #f5d79e;
-    border-radius: var(--radius);
-    padding: 1rem 1.25rem;
-    margin: 1.5rem;
-    display: flex;
-    gap: 12px;
-    align-items: flex-start;
+    background: #fff8e6; border: 1px solid #f5d79e; border-radius: var(--radius);
+    padding: 1rem 1.25rem; margin: 1.5rem; display: flex; gap: 12px; align-items: flex-start;
   }
   .setup-banner.hidden { display: none; }
-  .setup-banner-icon { font-size: 1.2rem; flex-shrink: 0; }
   .setup-banner h3 { font-size: 0.9rem; font-weight: 600; margin-bottom: 4px; color: #7a4f00; }
   .setup-banner p { font-size: 0.82rem; color: #8c6020; line-height: 1.5; }
   .setup-banner input[type="text"] {
-    font-family: var(--font);
-    font-size: 0.82rem;
-    border: 1px solid #f5d79e;
-    border-radius: 6px;
-    padding: 5px 10px;
-    width: 100%;
-    max-width: 480px;
-    margin-top: 8px;
-    background: #fffdf7;
-    color: var(--text);
+    font-family: var(--font); font-size: 0.82rem; border: 1px solid #f5d79e;
+    border-radius: 6px; padding: 5px 10px; width: 100%; max-width: 480px;
+    margin-top: 8px; background: #fffdf7; color: var(--text);
   }
   .setup-banner .banner-actions { display: flex; gap: 8px; margin-top: 8px; flex-wrap: wrap; }
 
   .filters {
-    padding: 0 1.5rem 1rem;
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-    align-items: center;
+    padding: 0 1.5rem 1rem; display: flex; gap: 8px; flex-wrap: wrap; align-items: center;
   }
-
   select, input[type="text"].search {
-    font-family: var(--font);
-    font-size: 0.85rem;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 6px 10px;
-    background: var(--surface);
-    color: var(--text);
+    font-family: var(--font); font-size: 0.85rem; border: 1px solid var(--border);
+    border-radius: 8px; padding: 6px 10px; background: var(--surface); color: var(--text);
   }
-
   input[type="text"].search { min-width: 200px; }
 
   .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 1rem;
-    padding: 0 1.5rem 2rem;
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1rem; padding: 0 1.5rem 2rem;
   }
 
   .card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    overflow: hidden;
-    box-shadow: var(--shadow);
-    display: flex;
-    flex-direction: column;
-    transition: box-shadow 0.2s;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow);
+    display: flex; flex-direction: column; transition: box-shadow 0.2s;
   }
   .card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.12); }
 
   .card-photos {
-    position: relative;
-    height: 180px;
-    background: #f0ede8;
-    overflow: hidden;
-    cursor: pointer;
+    position: relative; height: 180px; background: #f0ede8; overflow: hidden; cursor: pointer;
   }
-  .card-photos img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
+  .card-photos img { width: 100%; height: 100%; object-fit: cover; }
   .card-photos .no-photo {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    color: var(--muted);
-    font-size: 0.8rem;
-    gap: 6px;
+    display: flex; flex-direction: column; align-items: center;
+    justify-content: center; height: 100%; color: var(--muted); font-size: 0.8rem; gap: 6px;
   }
   .card-photos .no-photo svg { opacity: 0.4; }
   .card-photos .photo-count {
-    position: absolute;
-    bottom: 8px;
-    right: 8px;
-    background: rgba(0,0,0,0.55);
-    color: #fff;
-    font-size: 0.72rem;
-    padding: 2px 7px;
-    border-radius: 20px;
+    position: absolute; bottom: 8px; right: 8px; background: rgba(0,0,0,0.55);
+    color: #fff; font-size: 0.72rem; padding: 2px 7px; border-radius: 20px;
   }
   .card-photos .add-photo-hint {
-    position: absolute;
-    inset: 0;
-    background: rgba(0,0,0,0);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    transition: all 0.2s;
-    font-size: 0.8rem;
-    color: #fff;
+    position: absolute; inset: 0; background: rgba(0,0,0,0);
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; transition: all 0.2s; font-size: 0.8rem; color: #fff;
   }
   .card-photos:hover .add-photo-hint { background: rgba(0,0,0,0.35); opacity: 1; }
 
   .estado-badge {
-    position: absolute;
-    top: 8px;
-    left: 8px;
-    font-size: 0.7rem;
-    font-weight: 600;
-    padding: 3px 9px;
-    border-radius: 20px;
-    text-transform: uppercase;
-    letter-spacing: 0.3px;
+    position: absolute; top: 8px; left: 8px; font-size: 0.7rem; font-weight: 600;
+    padding: 3px 9px; border-radius: 20px; text-transform: uppercase; letter-spacing: 0.3px;
   }
   .estado-interesado { background: #dff4e8; color: #1a5c33; }
   .estado-visitado { background: #ddeeff; color: #1a3c6e; }
   .estado-descartado { background: #f5e8e8; color: #7a2020; }
   .estado-pendiente { background: #f5f0e0; color: #6b5010; }
   .estado-vendido { background: #ebebeb; color: #555; }
+  .estado-ok { background: #e8f0e8; color: #2a4a2a; }
 
   .card-body { padding: 12px 14px; flex: 1; display: flex; flex-direction: column; gap: 8px; }
-
   .card-title { font-size: 0.95rem; font-weight: 600; line-height: 1.3; }
   .card-subtitle { font-size: 0.8rem; color: var(--muted); }
-
   .card-price { font-size: 1.1rem; font-weight: 700; color: var(--accent); }
   .card-price span { font-size: 0.75rem; font-weight: 400; color: var(--muted); margin-left: 4px; }
-
-  .card-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 5px;
-    margin-top: 2px;
-  }
-  .tag {
-    background: var(--tag-bg);
-    color: var(--tag-text);
-    font-size: 0.72rem;
-    padding: 2px 8px;
-    border-radius: 20px;
-  }
+  .card-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 2px; }
+  .tag { background: var(--tag-bg); color: var(--tag-text); font-size: 0.72rem; padding: 2px 8px; border-radius: 20px; }
   .tag.no { background: #fdf2f1; color: #a03020; }
-
   .stars { color: #e0a800; font-size: 0.85rem; letter-spacing: 1px; }
-
   .card-notes { font-size: 0.78rem; color: var(--muted); line-height: 1.5; font-style: italic; border-top: 1px solid var(--border); padding-top: 8px; margin-top: 4px; }
 
   .card-footer {
-    padding: 8px 14px;
-    border-top: 1px solid var(--border);
-    display: flex;
-    gap: 6px;
-    justify-content: flex-end;
-    align-items: center;
+    padding: 8px 14px; border-top: 1px solid var(--border);
+    display: flex; gap: 6px; justify-content: flex-end; align-items: center;
   }
-
-  .card-url { font-size: 0.75rem; color: var(--accent); text-decoration: none; margin-right: auto; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 120px; }
+  .card-url {
+    font-size: 0.75rem; color: var(--accent); text-decoration: none;
+    margin-right: auto; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 120px;
+  }
   .card-url:hover { text-decoration: underline; }
 
-  /* Modal */
   .modal-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.5);
-    z-index: 200;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 1rem;
+    position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 200;
+    display: flex; align-items: center; justify-content: center; padding: 1rem;
   }
   .modal-overlay.hidden { display: none; }
-
   .modal {
-    background: var(--surface);
-    border-radius: var(--radius);
-    width: 100%;
-    max-width: 680px;
-    max-height: 90vh;
-    overflow-y: auto;
-    padding: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+    background: var(--surface); border-radius: var(--radius); width: 100%;
+    max-width: 680px; max-height: 90vh; overflow-y: auto; padding: 1.5rem;
+    display: flex; flex-direction: column; gap: 1rem;
   }
-
   .modal h2 { font-size: 1rem; font-weight: 600; }
 
-  .form-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-  }
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
   .form-grid.triple { grid-template-columns: 1fr 1fr 1fr; }
   .form-group { display: flex; flex-direction: column; gap: 4px; }
   .form-group.full { grid-column: 1 / -1; }
   label { font-size: 0.78rem; color: var(--muted); font-weight: 500; }
   input, select, textarea {
-    font-family: var(--font);
-    font-size: 0.85rem;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 7px 10px;
-    background: var(--surface);
-    color: var(--text);
-    width: 100%;
+    font-family: var(--font); font-size: 0.85rem; border: 1px solid var(--border);
+    border-radius: 8px; padding: 7px 10px; background: var(--surface); color: var(--text); width: 100%;
   }
   textarea { resize: vertical; min-height: 70px; }
   input:focus, select:focus, textarea:focus { outline: 2px solid var(--accent); outline-offset: 1px; border-color: transparent; }
 
   .photo-zone {
-    border: 2px dashed var(--border);
-    border-radius: 10px;
-    padding: 1rem;
-    text-align: center;
-    color: var(--muted);
-    font-size: 0.82rem;
-    cursor: pointer;
-    transition: border-color 0.2s;
-    position: relative;
+    border: 2px dashed var(--border); border-radius: 10px; padding: 1rem;
+    text-align: center; color: var(--muted); font-size: 0.82rem; cursor: pointer;
+    transition: border-color 0.2s; position: relative;
   }
   .photo-zone:hover, .photo-zone.dragover { border-color: var(--accent); color: var(--accent); }
   .photo-zone input[type="file"] { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
 
   .photo-thumbs { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
   .photo-thumb {
-    position: relative;
-    width: 72px;
-    height: 72px;
-    border-radius: 8px;
-    overflow: hidden;
-    border: 1px solid var(--border);
+    position: relative; width: 72px; height: 72px;
+    border-radius: 8px; overflow: hidden; border: 1px solid var(--border);
   }
   .photo-thumb img { width: 100%; height: 100%; object-fit: cover; }
+  .photo-thumb .uploading {
+    position: absolute; inset: 0; background: rgba(0,0,0,0.5);
+    display: flex; align-items: center; justify-content: center;
+    color: #fff; font-size: 0.65rem; text-align: center;
+  }
   .photo-thumb button {
-    position: absolute;
-    top: 2px;
-    right: 2px;
-    width: 18px;
-    height: 18px;
-    padding: 0;
-    border-radius: 50%;
-    background: rgba(0,0,0,0.6);
-    color: #fff;
-    border: none;
-    font-size: 11px;
-    line-height: 18px;
-    text-align: center;
+    position: absolute; top: 2px; right: 2px; width: 18px; height: 18px;
+    padding: 0; border-radius: 50%; background: rgba(0,0,0,0.6); color: #fff;
+    border: none; font-size: 11px; line-height: 18px; text-align: center;
   }
   .photo-thumb button:hover { background: rgba(180,0,0,0.8); }
 
   .modal-actions { display: flex; gap: 8px; justify-content: flex-end; margin-top: 4px; padding-top: 8px; border-top: 1px solid var(--border); }
 
-  /* Lightbox */
   .lightbox {
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.92);
-    z-index: 300;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    gap: 12px;
+    position: fixed; inset: 0; background: rgba(0,0,0,0.92); z-index: 300;
+    display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 12px;
   }
   .lightbox.hidden { display: none; }
   .lightbox img { max-width: 90vw; max-height: 80vh; border-radius: 8px; object-fit: contain; }
@@ -351,12 +195,7 @@
   .lightbox-nav button:hover { background: rgba(255,255,255,0.3); }
   .lightbox-close { position: absolute; top: 16px; right: 16px; background: none; border: none; color: #fff; font-size: 1.5rem; cursor: pointer; }
 
-  .empty-state {
-    grid-column: 1 / -1;
-    text-align: center;
-    padding: 3rem 1rem;
-    color: var(--muted);
-  }
+  .empty-state { grid-column: 1 / -1; text-align: center; padding: 3rem 1rem; color: var(--muted); }
   .empty-state h3 { font-size: 1rem; margin-bottom: 6px; color: var(--text); }
 
   .sync-status { font-size: 0.75rem; color: var(--muted); }
@@ -364,14 +203,10 @@
   .sync-status.err { color: var(--danger); }
 
   .valoracion-input { display: flex; gap: 4px; }
-  .valoracion-input span {
-    font-size: 1.2rem;
-    cursor: pointer;
-    opacity: 0.3;
-    transition: opacity 0.15s;
-    user-select: none;
-  }
+  .valoracion-input span { font-size: 1.2rem; cursor: pointer; opacity: 0.3; transition: opacity 0.15s; user-select: none; }
   .valoracion-input span.active { opacity: 1; }
+
+  .upload-progress { font-size: 0.75rem; color: var(--muted); margin-top: 4px; }
 
   @media (max-width: 500px) {
     .form-grid { grid-template-columns: 1fr; }
@@ -385,26 +220,25 @@
 <header>
   <div class="logo">Piso Tracker <span id="piso-count"></span></div>
   <div class="header-actions">
-    <span class="sync-status" id="sync-status">Sin conexión a Sheet</span>
-    <button onclick="openSetup()">⚙ Configurar Sheet</button>
+    <span class="sync-status" id="sync-status">Sin conexión</span>
+    <button onclick="openSetup()">⚙ Configurar</button>
     <button class="primary" onclick="openModal()">+ Añadir piso</button>
   </div>
 </header>
 
 <div class="setup-banner hidden" id="setup-banner">
-  <div class="setup-banner-icon">📋</div>
   <div style="flex:1">
-    <h3>Conecta tu Google Sheet</h3>
-    <p>Despliega el Apps Script en tu Sheet y pega la URL de la webapp aquí. Las fotos se guardan en el navegador; el resto se sincroniza con tu Sheet.</p>
+    <h3>Configuración</h3>
+    <p>URL del Apps Script (para datos del Sheet y fotos en Drive):</p>
     <input type="text" id="sheet-url-input" placeholder="https://script.google.com/macros/s/XXXX/exec" />
     <div class="banner-actions">
-      <button class="primary small" onclick="saveSheetUrl()">Guardar URL</button>
+      <button class="primary small" onclick="saveSheetUrl()">Guardar</button>
       <button class="small" onclick="closeBanner()">Cancelar</button>
     </div>
   </div>
 </div>
 
-<div class="filters" id="filters-bar">
+<div class="filters">
   <input type="text" class="search" id="search" placeholder="Buscar por barrio, agencia…" oninput="renderCards()">
   <select id="filter-estado" onchange="renderCards()">
     <option value="">Todos los estados</option>
@@ -427,9 +261,9 @@
 
 <div class="grid" id="grid"></div>
 
-<!-- ADD/EDIT MODAL -->
+<!-- MODAL -->
 <div class="modal-overlay hidden" id="modal-overlay" onclick="closeModalOnOverlay(event)">
-  <div class="modal" id="modal">
+  <div class="modal">
     <h2 id="modal-title">Añadir piso</h2>
 
     <div class="form-grid">
@@ -464,14 +298,9 @@
         <label>Altura</label>
         <select id="f-altura">
           <option value="">—</option>
-          <option>Bajo</option>
-          <option>Entresuelo</option>
-          <option>Primero</option>
-          <option>Segundo</option>
-          <option>Tercero</option>
-          <option>Cuarto</option>
-          <option>Quinto</option>
-          <option>Ático</option>
+          <option>Bajo</option><option>Entresuelo</option><option>Primero</option>
+          <option>Segundo</option><option>Tercero</option><option>Cuarto</option>
+          <option>Quinto</option><option>Ático</option>
         </select>
       </div>
       <div class="form-group">
@@ -479,8 +308,8 @@
         <select id="f-ascensor"><option value="">—</option><option>Sí</option><option>No</option></select>
       </div>
       <div class="form-group">
-        <label>Terrassa S/N</label>
-        <select id="f-terrassa-tf"><option value="">—</option><option>Sí</option><option>No</option></select>
+        <label>Terraza S/N</label>
+        <select id="f-terraza"><option value="">—</option><option>Sí</option><option>No</option></select>
       </div>
       <div class="form-group">
         <label>Lavadero</label>
@@ -505,12 +334,8 @@
         <label>Portal (WEB)</label>
         <select id="f-web">
           <option value="">—</option>
-          <option>Idealista</option>
-          <option>Habitaclia</option>
-          <option>Fotocasa</option>
-          <option>Pisos.com</option>
-          <option>Particular</option>
-          <option>Otro</option>
+          <option>Idealista</option><option>Habitaclia</option><option>Fotocasa</option>
+          <option>Pisos.com</option><option>Particular</option><option>Otro</option>
         </select>
       </div>
       <div class="form-group">
@@ -524,21 +349,15 @@
       <div class="form-group">
         <label>Estado</label>
         <select id="f-estado">
-          <option>Pendiente</option>
-          <option>Interesado</option>
-          <option>Visitado</option>
-          <option>Descartado</option>
-          <option>Vendido</option>
+          <option>Pendiente</option><option>Interesado</option>
+          <option>Visitado</option><option>Descartado</option><option>Vendido</option>
         </select>
       </div>
       <div class="form-group">
         <label>Visita</label>
         <select id="f-visita">
-          <option value="">—</option>
-          <option>Solicitada</option>
-          <option>Programada</option>
-          <option>Realizada</option>
-          <option>No</option>
+          <option value="">—</option><option>Solicitada</option>
+          <option>Programada</option><option>Realizada</option><option>No</option>
         </select>
       </div>
     </div>
@@ -560,21 +379,20 @@
     </div>
 
     <div class="form-group">
-      <label>Fotos (arrastra, pega Ctrl+V, o haz clic)</label>
+      <label>Fotos (arrastra, pega Ctrl+V, o haz clic) — se guardan en Drive, visibles para todos</label>
       <div class="photo-zone" id="photo-zone"
-           ondragover="photoDragOver(event)"
-           ondragleave="photoDragLeave(event)"
-           ondrop="photoDrop(event)">
+           ondragover="photoDragOver(event)" ondragleave="photoDragLeave(event)" ondrop="photoDrop(event)">
         📷 Arrastra fotos aquí o haz clic para seleccionar
         <input type="file" accept="image/*" multiple onchange="photoFileInput(event)">
       </div>
+      <div class="upload-progress" id="upload-progress"></div>
       <div class="photo-thumbs" id="photo-thumbs"></div>
     </div>
 
     <div class="modal-actions">
       <button onclick="closeModal()">Cancelar</button>
       <button class="danger small" id="btn-delete" style="display:none" onclick="deleteCurrentPiso()">Eliminar</button>
-      <button class="primary" onclick="savePiso()">Guardar</button>
+      <button class="primary" id="btn-save" onclick="savePiso()">Guardar</button>
     </div>
   </div>
 </div>
@@ -590,44 +408,36 @@
 </div>
 
 <script>
-// ============================================================
-// STATE
-// ============================================================
-let pisos = [];           // datos del sheet
-let photos = {};          // { id: [base64, ...] } — guardado en localStorage
+let pisos = [];
 let currentEditId = null;
-let currentPhotos = [];   // fotos en el modal activo
+let currentPhotos = []; // [{url, isNew, file?, localPreview?}]
 let valoracion = 0;
 let lightboxPhotos = [];
 let lightboxIdx = 0;
 
-const STORAGE_PHOTOS = "pisotracker_photos";
-const STORAGE_URL    = "pisotracker_sheeturl";
-const STORAGE_LOCAL  = "pisotracker_local"; // fallback sin sheet
+const STORAGE_URL   = "pisotracker_sheeturl";
+const STORAGE_LOCAL = "pisotracker_local";
 
-// ============================================================
-// INIT
-// ============================================================
 function init() {
-  photos = JSON.parse(localStorage.getItem(STORAGE_PHOTOS) || "{}");
   const url = localStorage.getItem(STORAGE_URL);
   if (url) {
     document.getElementById("sheet-url-input").value = url;
     loadFromSheet();
   } else {
-    // Modo local sin sheet
     pisos = JSON.parse(localStorage.getItem(STORAGE_LOCAL) || "[]");
-    pisos.forEach((p, i) => { if (!p._id) p._id = "local_" + i; });
     renderCards();
-    document.getElementById("sync-status").textContent = "Sin Sheet (modo local)";
+    setStatus("Sin Sheet (modo local)", "");
   }
   document.addEventListener("paste", handlePaste);
 }
 
-// ============================================================
-// SHEET SYNC
-// ============================================================
 function sheetUrl() { return localStorage.getItem(STORAGE_URL); }
+
+function setStatus(msg, cls) {
+  const el = document.getElementById("sync-status");
+  el.textContent = msg;
+  el.className = "sync-status " + cls;
+}
 
 async function loadFromSheet() {
   const url = sheetUrl();
@@ -640,10 +450,9 @@ async function loadFromSheet() {
     pisos = data.rows.map(r => ({ ...r, _id: r._id || String(r._rowIndex) }));
     populateFilters();
     renderCards();
-    setStatus("Sheet conectado ✓", "ok");
-  } catch (e) {
+    setStatus("Conectado ✓", "ok");
+  } catch(e) {
     setStatus("Error: " + e.message, "err");
-    // fallback a local
     pisos = JSON.parse(localStorage.getItem(STORAGE_LOCAL) || "[]");
     renderCards();
   }
@@ -654,14 +463,12 @@ async function pushToSheet(piso) {
   if (!url) { saveLocal(); return; }
   const action = piso._rowIndex ? "update" : "add";
   try {
-    const res = await fetch(url, {
-      method: "POST",
-      body: JSON.stringify({ action, ...piso })
-    });
+    const res = await fetch(url, { method: "POST", body: JSON.stringify({ action, ...piso }) });
     const data = await res.json();
     if (data.rowIndex) piso._rowIndex = data.rowIndex;
+    if (data._id) piso._id = data._id;
     setStatus("Guardado ✓", "ok");
-  } catch (e) {
+  } catch(e) {
     setStatus("Error al guardar: " + e.message, "err");
   }
   saveLocal();
@@ -669,39 +476,19 @@ async function pushToSheet(piso) {
 
 async function deleteFromSheet(piso) {
   const url = sheetUrl();
-  if (!url) { saveLocal(); return; }
-  if (!piso._rowIndex) return;
+  if (!url || !piso._rowIndex) return;
   try {
-    await fetch(url, {
-      method: "POST",
-      body: JSON.stringify({ action: "delete", _rowIndex: piso._rowIndex })
-    });
-    setStatus("Eliminado ✓", "ok");
-  } catch (e) {
-    setStatus("Error al eliminar: " + e.message, "err");
-  }
+    await fetch(url, { method: "POST", body: JSON.stringify({ action: "delete", _rowIndex: piso._rowIndex }) });
+  } catch(e) { console.error(e); }
 }
 
 function saveLocal() {
   localStorage.setItem(STORAGE_LOCAL, JSON.stringify(pisos));
 }
 
-function setStatus(msg, cls) {
-  const el = document.getElementById("sync-status");
-  el.textContent = msg;
-  el.className = "sync-status " + cls;
-}
-
-// ============================================================
-// SETUP BANNER
-// ============================================================
-function openSetup() {
-  const b = document.getElementById("setup-banner");
-  b.classList.toggle("hidden");
-}
-function closeBanner() {
-  document.getElementById("setup-banner").classList.add("hidden");
-}
+// ---- SETUP ----
+function openSetup() { document.getElementById("setup-banner").classList.toggle("hidden"); }
+function closeBanner() { document.getElementById("setup-banner").classList.add("hidden"); }
 function saveSheetUrl() {
   const url = document.getElementById("sheet-url-input").value.trim();
   if (!url.startsWith("https://")) { alert("URL no válida"); return; }
@@ -710,9 +497,7 @@ function saveSheetUrl() {
   loadFromSheet();
 }
 
-// ============================================================
-// RENDER CARDS
-// ============================================================
+// ---- RENDER ----
 function populateFilters() {
   const pobs = [...new Set(pisos.map(p => p["Poblacion"]).filter(Boolean))].sort();
   const sel = document.getElementById("filter-poblacion");
@@ -727,19 +512,15 @@ function filteredPisos() {
   const estado = document.getElementById("filter-estado").value;
   const pob = document.getElementById("filter-poblacion").value;
   const sort = document.getElementById("sort-by").value;
-
   let res = pisos.filter(p => {
-    const text = JSON.stringify(p).toLowerCase();
-    if (q && !text.includes(q)) return false;
+    if (q && !JSON.stringify(p).toLowerCase().includes(q)) return false;
     if (estado && p["Estado"] !== estado) return false;
     if (pob && p["Poblacion"] !== pob) return false;
     return true;
   });
-
   if (sort === "precio-asc") res.sort((a,b) => (Number(a["Precio"])||0) - (Number(b["Precio"])||0));
   else if (sort === "precio-desc") res.sort((a,b) => (Number(b["Precio"])||0) - (Number(a["Precio"])||0));
   else if (sort === "m2") res.sort((a,b) => (Number(b["m2"])||0) - (Number(a["m2"])||0));
-
   return res;
 }
 
@@ -747,18 +528,18 @@ function renderCards() {
   const grid = document.getElementById("grid");
   const list = filteredPisos();
   document.getElementById("piso-count").textContent = pisos.length ? `— ${pisos.length} pisos` : "";
-
   if (!list.length) {
     grid.innerHTML = '<div class="empty-state"><h3>Sin resultados</h3><p>Prueba con otros filtros o añade tu primer piso.</p></div>';
     return;
   }
-
   grid.innerHTML = list.map(p => cardHTML(p)).join("");
 }
 
 function cardHTML(p) {
   const id = p._id;
-  const photoList = photos[id] || [];
+  // Photos: stored as JSON array of Drive URLs in "Fotos" column
+  let photoUrls = [];
+  try { photoUrls = JSON.parse(p["Fotos"] || "[]"); } catch(e) {}
   const precio = p["Precio"] ? "€" + Number(p["Precio"]).toLocaleString("es-ES") : "";
   const m2 = p["m2"] ? p["m2"] + " m²" : "";
   const ppm2 = (p["Precio"] && p["m2"]) ? "€" + Math.round(p["Precio"]/p["m2"]) + "/m²" : "";
@@ -767,19 +548,23 @@ function cardHTML(p) {
 
   const tags = [];
   if (p["Ascensor"] === "Sí") tags.push({label:"Ascensor", ok:true});
-  if (p["Terrassa Si/no"] === "Sí") tags.push({label:"Terrassa", ok:true});
+  if (p["Terraza Si/No"] === "Sí") tags.push({label:"Terraza", ok:true});
   if (p["Parking Si/No"] === "Sí") tags.push({label:"Parking", ok:true});
   if (p["Trastero Si/No"] === "Sí") tags.push({label:"Trastero", ok:true});
   if (p["Lavadero"] === "Sí") tags.push({label:"Lavadero", ok:true});
   if (p["Ascensor"] === "No") tags.push({label:"Sin ascensor", ok:false});
+  if (p["Terraza Si/No"] === "No") tags.push({label:"Sin terraza", ok:false});
   const tagsHTML = tags.map(t => `<span class="tag${t.ok?'':' no'}">${t.label}</span>`).join("");
 
-  const val = Number(p["Valoracion"] || p["Valoració"] || 0);
+  const val = Number(p["Valoracion"] || 0);
   const starsHTML = val ? "★".repeat(val) + "☆".repeat(5-val) : "";
 
-  const photo = photoList[0] ? `<img src="${photoList[0]}" alt="">` : `<div class="no-photo"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="12" cy="12" r="3"/></svg><span>Sin fotos</span></div>`;
+  const firstPhoto = photoUrls[0];
+  const photo = firstPhoto
+    ? `<img src="${firstPhoto}" alt="" onerror="this.style.display='none'">`
+    : `<div class="no-photo"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="12" cy="12" r="3"/></svg><span>Sin fotos</span></div>`;
 
-  const url1 = p["URL1"] || p["URL 1"] || "";
+  const url1 = p["URL1"] || "";
   const urlHTML = url1 ? `<a class="card-url" href="${url1}" target="_blank">${p["WEB"] || "Ver anuncio"}</a>` : `<span></span>`;
 
   return `
@@ -787,15 +572,15 @@ function cardHTML(p) {
     <div class="card-photos" onclick="openLightbox('${id}')">
       ${photo}
       <span class="estado-badge ${estadoClass}">${estado}</span>
-      ${photoList.length > 1 ? `<span class="photo-count">${photoList.length} fotos</span>` : ""}
+      ${photoUrls.length > 1 ? `<span class="photo-count">${photoUrls.length} fotos</span>` : ""}
       <div class="add-photo-hint">Ver fotos</div>
     </div>
     <div class="card-body">
       <div>
-        <div class="card-title">${p["Barrio"] || ""} ${p["Poblacion"] || "—"}</div>
-        <div class="card-subtitle">${p["Altura"] || ""} ${p["Año"] ? "· " + p["Año"] : ""} ${p["Agencia"] ? "· " + p["Agencia"] : ""}</div>
+        <div class="card-title">${p["Barrio"] ? p["Barrio"] + " · " : ""}${p["Poblacion"] || "—"}</div>
+        <div class="card-subtitle">${[p["Altura"], p["Año"] ? p["Año"] : "", p["Agencia"]].filter(Boolean).join(" · ")}</div>
       </div>
-      ${precio ? `<div class="card-price">${precio} ${m2 ? `<span>${m2} ${ppm2 ? "· " + ppm2 : ""} · ${p["habitaciones"]||p["Habitaciones"]||""} hab.</span>` : ""}</div>` : ""}
+      ${precio ? `<div class="card-price">${precio}<span>${[m2, ppm2, p["habitaciones"] ? p["habitaciones"]+" hab." : ""].filter(Boolean).join(" · ")}</span></div>` : ""}
       <div class="card-tags">${tagsHTML}</div>
       ${starsHTML ? `<div class="stars">${starsHTML}</div>` : ""}
       ${p["Notas"] ? `<div class="card-notes">${p["Notas"]}</div>` : ""}
@@ -807,49 +592,49 @@ function cardHTML(p) {
   </div>`;
 }
 
-// ============================================================
-// MODAL
-// ============================================================
+// ---- MODAL ----
 function openModal(id) {
   currentEditId = id || null;
-  currentPhotos = id ? [...(photos[id] || [])] : [];
   valoracion = 0;
   const p = id ? pisos.find(x => x._id === id) : {};
+
+  // Load existing photo URLs
+  let photoUrls = [];
+  try { photoUrls = JSON.parse(p["Fotos"] || "[]"); } catch(e) {}
+  currentPhotos = photoUrls.map(url => ({ url, isNew: false }));
 
   document.getElementById("modal-title").textContent = id ? "Editar piso" : "Añadir piso";
   document.getElementById("btn-delete").style.display = id ? "inline-block" : "none";
 
-  // Fill fields
   const fields = {
     "f-poblacion": p["Poblacion"] || "",
     "f-barrio": p["Barrio"] || "",
     "f-precio": p["Precio"] || "",
     "f-m2": p["m2"] || "",
-    "f-habitaciones": p["habitaciones"] || p["Habitaciones"] || "",
-    "f-anyo": p["Año"] || p["Anyo"] || "",
+    "f-habitaciones": p["habitaciones"] || "",
+    "f-anyo": p["Año"] || "",
     "f-altura": p["Altura"] || "",
     "f-ascensor": p["Ascensor"] || "",
-    "f-terrassa-tf": p["Terrassa Si/no"] || "",
+    "f-terraza": p["Terraza Si/No"] || "",
     "f-lavadero": p["Lavadero"] || "",
     "f-parking": p["Parking Si/No"] || "",
     "f-trastero": p["Trastero Si/No"] || "",
     "f-agencia": p["Agencia"] || "",
     "f-web": p["WEB"] || "",
-    "f-url1": p["URL1"] || p["URL 1"] || "",
-    "f-url2": p["URL2"] || p["URL 2"] || "",
+    "f-url1": p["URL1"] || "",
+    "f-url2": p["URL2"] || "",
     "f-estado": p["Estado"] || "Pendiente",
     "f-visita": p["Visita"] || "",
     "f-notas": p["Notas"] || ""
   };
-  Object.entries(fields).forEach(([id, val]) => {
-    const el = document.getElementById(id);
+  Object.entries(fields).forEach(([fid, val]) => {
+    const el = document.getElementById(fid);
     if (el) el.value = val;
   });
 
-  const val = Number(p["Valoracion"] || p["Valoració"] || 0);
-  setValoracion(val);
-
+  setValoracion(Number(p["Valoracion"] || 0));
   renderPhotoThumbs();
+  document.getElementById("upload-progress").textContent = "";
   document.getElementById("modal-overlay").classList.remove("hidden");
 }
 
@@ -867,6 +652,41 @@ async function savePiso() {
   const pop = document.getElementById("f-poblacion").value.trim();
   if (!pop) { alert("La población es obligatoria"); return; }
 
+  const btn = document.getElementById("btn-save");
+  btn.disabled = true;
+  btn.textContent = "Guardando…";
+
+  // Upload new photos to Drive
+  const newPhotos = currentPhotos.filter(p => p.isNew && p.file);
+  if (newPhotos.length > 0) {
+    document.getElementById("upload-progress").textContent = `Subiendo ${newPhotos.length} foto(s) a Drive…`;
+    for (let i = 0; i < newPhotos.length; i++) {
+      const ph = newPhotos[i];
+      document.getElementById("upload-progress").textContent = `Subiendo foto ${i+1} de ${newPhotos.length}…`;
+      try {
+        const base64 = ph.localPreview.split(",")[1];
+        const mimeType = ph.file.type;
+        const fname = ph.file.name || "foto.jpg";
+        const url = sheetUrl();
+        if (url) {
+          const res = await fetch(url, {
+            method: "POST",
+            body: JSON.stringify({ action: "uploadPhoto", base64, mimeType, fileName: fname })
+          });
+          const data = await res.json();
+          if (data.url) {
+            ph.url = data.url;
+            ph.isNew = false;
+          }
+        }
+      } catch(e) {
+        console.error("Error subiendo foto:", e);
+      }
+    }
+    document.getElementById("upload-progress").textContent = "";
+  }
+
+  const photoUrls = currentPhotos.map(p => p.url).filter(Boolean);
   const now = Date.now();
   const id = currentEditId || "p_" + now;
 
@@ -878,8 +698,7 @@ async function savePiso() {
     "Precio": document.getElementById("f-precio").value,
     "m2": document.getElementById("f-m2").value,
     "habitaciones": document.getElementById("f-habitaciones").value,
-    "Año": document.getElementById("f-anyo").value,
-    "Terrassa Si/no": document.getElementById("f-terrassa-tf").value,
+    "Terraza Si/No": document.getElementById("f-terraza").value,
     "Lavadero": document.getElementById("f-lavadero").value,
     "Parking Si/No": document.getElementById("f-parking").value,
     "Trastero Si/No": document.getElementById("f-trastero").value,
@@ -887,19 +706,15 @@ async function savePiso() {
     "Altura": document.getElementById("f-altura").value,
     "Estado": document.getElementById("f-estado").value,
     "Año": document.getElementById("f-anyo").value,
-    "Barrio": document.getElementById("f-barrio").value,
     "Agencia": document.getElementById("f-agencia").value,
     "Visita": document.getElementById("f-visita").value,
     "WEB": document.getElementById("f-web").value,
     "URL1": document.getElementById("f-url1").value,
     "URL2": document.getElementById("f-url2").value,
     "Notas": document.getElementById("f-notas").value,
-    "Valoracion": valoracion || ""
+    "Valoracion": valoracion || "",
+    "Fotos": JSON.stringify(photoUrls)
   };
-
-  // Save photos locally
-  photos[id] = currentPhotos;
-  localStorage.setItem(STORAGE_PHOTOS, JSON.stringify(photos));
 
   if (currentEditId) {
     const idx = pisos.findIndex(x => x._id === currentEditId);
@@ -912,6 +727,9 @@ async function savePiso() {
   populateFilters();
   renderCards();
   await pushToSheet(piso);
+
+  btn.disabled = false;
+  btn.textContent = "Guardar";
 }
 
 async function deleteCurrentPiso() {
@@ -919,24 +737,22 @@ async function deleteCurrentPiso() {
   if (!confirm("¿Eliminar este piso?")) return;
   const piso = pisos.find(x => x._id === currentEditId);
   pisos = pisos.filter(x => x._id !== currentEditId);
-  delete photos[currentEditId];
-  localStorage.setItem(STORAGE_PHOTOS, JSON.stringify(photos));
   closeModal();
   renderCards();
   if (piso) await deleteFromSheet(piso);
   saveLocal();
 }
 
-// ============================================================
-// PHOTOS
-// ============================================================
+// ---- PHOTOS ----
 function renderPhotoThumbs() {
   const c = document.getElementById("photo-thumbs");
-  c.innerHTML = currentPhotos.map((src, i) => `
-    <div class="photo-thumb">
+  c.innerHTML = currentPhotos.map((ph, i) => {
+    const src = ph.localPreview || ph.url;
+    return `<div class="photo-thumb">
       <img src="${src}" alt="">
       <button onclick="removePhoto(${i})">✕</button>
-    </div>`).join("");
+    </div>`;
+  }).join("");
 }
 
 function removePhoto(i) {
@@ -948,50 +764,32 @@ function addPhotoFromFile(file) {
   if (!file.type.startsWith("image/")) return;
   const reader = new FileReader();
   reader.onload = e => {
-    currentPhotos.push(e.target.result);
+    currentPhotos.push({ url: null, isNew: true, file, localPreview: e.target.result });
     renderPhotoThumbs();
   };
   reader.readAsDataURL(file);
 }
 
-function photoFileInput(e) {
-  [...e.target.files].forEach(addPhotoFromFile);
-}
-
-function photoDragOver(e) {
-  e.preventDefault();
-  document.getElementById("photo-zone").classList.add("dragover");
-}
-function photoDragLeave() {
-  document.getElementById("photo-zone").classList.remove("dragover");
-}
-function photoDrop(e) {
-  e.preventDefault();
-  photoDragLeave();
-  [...e.dataTransfer.files].forEach(addPhotoFromFile);
-}
-
+function photoFileInput(e) { [...e.target.files].forEach(addPhotoFromFile); }
+function photoDragOver(e) { e.preventDefault(); document.getElementById("photo-zone").classList.add("dragover"); }
+function photoDragLeave() { document.getElementById("photo-zone").classList.remove("dragover"); }
+function photoDrop(e) { e.preventDefault(); photoDragLeave(); [...e.dataTransfer.files].forEach(addPhotoFromFile); }
 function handlePaste(e) {
   if (document.getElementById("modal-overlay").classList.contains("hidden")) return;
   const items = e.clipboardData?.items;
   if (!items) return;
   for (const item of items) {
-    if (item.type.startsWith("image/")) {
-      addPhotoFromFile(item.getAsFile());
-    }
+    if (item.type.startsWith("image/")) addPhotoFromFile(item.getAsFile());
   }
 }
 
-// ============================================================
-// LIGHTBOX
-// ============================================================
+// ---- LIGHTBOX ----
 function openLightbox(id) {
-  const photoList = photos[id] || [];
-  if (!photoList.length) {
-    openModal(id); // Si no hay fotos, abre edición
-    return;
-  }
-  lightboxPhotos = photoList;
+  const p = pisos.find(x => x._id === id);
+  let photoUrls = [];
+  try { photoUrls = JSON.parse(p?.["Fotos"] || "[]"); } catch(e) {}
+  if (!photoUrls.length) { openModal(id); return; }
+  lightboxPhotos = photoUrls;
   lightboxIdx = 0;
   document.getElementById("lightbox-img").src = lightboxPhotos[0];
   document.getElementById("lightbox").classList.remove("hidden");
@@ -1015,9 +813,6 @@ document.addEventListener("keydown", e => {
   if (!document.getElementById("modal-overlay").classList.contains("hidden") && e.key === "Escape") closeModal();
 });
 
-// ============================================================
-// START
-// ============================================================
 init();
 </script>
 </body>
