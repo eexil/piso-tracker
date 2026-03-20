@@ -379,13 +379,12 @@
     </div>
 
     <div class="form-group">
-      <label>Fotos (arrastra, pega Ctrl+V, o haz clic) — se guardan en Drive, visibles para todos</label>
-      <div class="photo-zone" id="photo-zone"
-           ondragover="photoDragOver(event)" ondragleave="photoDragLeave(event)" ondrop="photoDrop(event)">
-        📷 Arrastra fotos aquí o haz clic para seleccionar
-        <input type="file" accept="image/*" multiple onchange="photoFileInput(event)">
+      <label>Fotos — pega enlaces de Google Drive o cualquier URL de imagen</label>
+      <div style="display:flex; gap:6px;">
+        <input type="text" id="f-photo-url" placeholder="https://drive.google.com/file/d/…" style="flex:1">
+        <button type="button" class="small" onclick="addPhotoUrl()">Añadir</button>
       </div>
-      <div class="upload-progress" id="upload-progress"></div>
+      <p style="font-size:0.72rem; color:var(--muted); margin-top:4px;">En Drive: clic derecho en la foto → Obtener enlace → Cualquier persona con el enlace</p>
       <div class="photo-thumbs" id="photo-thumbs"></div>
     </div>
 
@@ -601,7 +600,7 @@ function openModal(id) {
   // Load existing photo URLs
   let photoUrls = [];
   try { photoUrls = JSON.parse(p["Fotos"] || "[]"); } catch(e) {}
-  currentPhotos = photoUrls.map(url => ({ url, isNew: false }));
+  currentPhotos = photoUrls.map(url => ({ url }));
 
   document.getElementById("modal-title").textContent = id ? "Editar piso" : "Añadir piso";
   document.getElementById("btn-delete").style.display = id ? "inline-block" : "none";
@@ -655,36 +654,6 @@ async function savePiso() {
   const btn = document.getElementById("btn-save");
   btn.disabled = true;
   btn.textContent = "Guardando…";
-
-  // Upload new photos to Drive
-  const newPhotos = currentPhotos.filter(p => p.isNew && p.file);
-  if (newPhotos.length > 0) {
-    document.getElementById("upload-progress").textContent = `Subiendo ${newPhotos.length} foto(s) a Drive…`;
-    for (let i = 0; i < newPhotos.length; i++) {
-      const ph = newPhotos[i];
-      document.getElementById("upload-progress").textContent = `Subiendo foto ${i+1} de ${newPhotos.length}…`;
-      try {
-        const base64 = ph.localPreview.split(",")[1];
-        const mimeType = ph.file.type;
-        const fname = ph.file.name || "foto.jpg";
-        const url = sheetUrl();
-        if (url) {
-          const res = await fetch(url, {
-            method: "POST",
-            body: JSON.stringify({ action: "uploadPhoto", base64, mimeType, fileName: fname })
-          });
-          const data = await res.json();
-          if (data.url) {
-            ph.url = data.url;
-            ph.isNew = false;
-          }
-        }
-      } catch(e) {
-        console.error("Error subiendo foto:", e);
-      }
-    }
-    document.getElementById("upload-progress").textContent = "";
-  }
 
   const photoUrls = currentPhotos.map(p => p.url).filter(Boolean);
   const now = Date.now();
@@ -744,58 +713,36 @@ async function deleteCurrentPiso() {
 }
 
 // ---- PHOTOS ----
+function driveUrlToImg(url) {
+  // Convert Drive share link to direct image URL
+  const m = url.match(/\/file\/d\/([^/]+)/);
+  if (m) return "https://drive.google.com/uc?export=view&id=" + m[1];
+  const m2 = url.match(/id=([^&]+)/);
+  if (m2) return "https://drive.google.com/uc?export=view&id=" + m2[1];
+  return url; // return as-is if not Drive
+}
+
+function addPhotoUrl() {
+  const input = document.getElementById("f-photo-url");
+  const url = input.value.trim();
+  if (!url) return;
+  currentPhotos.push({ url: driveUrlToImg(url) });
+  input.value = "";
+  renderPhotoThumbs();
+}
+
 function renderPhotoThumbs() {
   const c = document.getElementById("photo-thumbs");
-  c.innerHTML = currentPhotos.map((ph, i) => {
-    const src = ph.localPreview || ph.url;
-    return `<div class="photo-thumb">
-      <img src="${src}" alt="">
+  c.innerHTML = currentPhotos.map((ph, i) => `
+    <div class="photo-thumb">
+      <img src="${ph.url}" alt="" onerror="this.parentElement.style.background='#eee'">
       <button onclick="removePhoto(${i})">✕</button>
-    </div>`;
-  }).join("");
+    </div>`).join("");
 }
 
 function removePhoto(i) {
   currentPhotos.splice(i, 1);
   renderPhotoThumbs();
-}
-
-function addPhotoFromFile(file) {
-  if (!file.type.startsWith("image/")) return;
-  const img = new Image();
-  const reader = new FileReader();
-  reader.onload = e => {
-    img.onload = () => {
-      const canvas = document.createElement("canvas");
-      const MAX = 1200;
-      let w = img.width, h = img.height;
-      if (w > MAX || h > MAX) {
-        if (w > h) { h = Math.round(h * MAX / w); w = MAX; }
-        else { w = Math.round(w * MAX / h); h = MAX; }
-      }
-      canvas.width = w; canvas.height = h;
-      canvas.getContext("2d").drawImage(img, 0, 0, w, h);
-      const compressed = canvas.toDataURL("image/jpeg", 0.75);
-      const compressedFile = { name: file.name, type: "image/jpeg" };
-      currentPhotos.push({ url: null, isNew: true, file: compressedFile, localPreview: compressed });
-      renderPhotoThumbs();
-    };
-    img.src = e.target.result;
-  };
-  reader.readAsDataURL(file);
-}
-
-function photoFileInput(e) { [...e.target.files].forEach(addPhotoFromFile); }
-function photoDragOver(e) { e.preventDefault(); document.getElementById("photo-zone").classList.add("dragover"); }
-function photoDragLeave() { document.getElementById("photo-zone").classList.remove("dragover"); }
-function photoDrop(e) { e.preventDefault(); photoDragLeave(); [...e.dataTransfer.files].forEach(addPhotoFromFile); }
-function handlePaste(e) {
-  if (document.getElementById("modal-overlay").classList.contains("hidden")) return;
-  const items = e.clipboardData?.items;
-  if (!items) return;
-  for (const item of items) {
-    if (item.type.startsWith("image/")) addPhotoFromFile(item.getAsFile());
-  }
 }
 
 // ---- LIGHTBOX ----
