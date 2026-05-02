@@ -300,7 +300,9 @@
           <option value="">—</option>
           <option>Bajo</option><option>Entresuelo</option><option>Primero</option>
           <option>Segundo</option><option>Tercero</option><option>Cuarto</option>
-          <option>Quinto</option><option>Ático</option>
+          <option>Quinto</option><option>Sexto</option><option>Séptimo</option>
+          <option>Octavo</option><option>Noveno</option><option>Décimo</option>
+          <option>Ático</option>
         </select>
       </div>
       <div class="form-group">
@@ -427,7 +429,6 @@ function init() {
     renderCards();
     setStatus("Sin Sheet (modo local)", "");
   }
-  document.addEventListener("paste", handlePaste);
 }
 
 function sheetUrl() { return localStorage.getItem(STORAGE_URL); }
