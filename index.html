@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Piso Tracker</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏠</text></svg>">
 <style>
   :root {
     --bg: #f5f3ef;
@@ -256,6 +257,8 @@
     <option value="precio-asc">Precio ↑</option>
     <option value="precio-desc">Precio ↓</option>
     <option value="m2">m² ↓</option>
+    <option value="ppm2-asc">€/m² ↑</option>
+    <option value="ppm2-desc">€/m² ↓</option>
   </select>
 </div>
 
@@ -521,6 +524,9 @@ function filteredPisos() {
   if (sort === "precio-asc") res.sort((a,b) => (Number(a["Precio"])||0) - (Number(b["Precio"])||0));
   else if (sort === "precio-desc") res.sort((a,b) => (Number(b["Precio"])||0) - (Number(a["Precio"])||0));
   else if (sort === "m2") res.sort((a,b) => (Number(b["m2"])||0) - (Number(a["m2"])||0));
+  else if (sort === "ppm2-asc") res.sort((a,b) => { const pa = (Number(a["Precio"])||0)/(Number(a["m2"])||1); const pb = (Number(b["Precio"])||0)/(Number(b["m2"])||1); return pa-pb; });
+  else if (sort === "ppm2-desc") res.sort((a,b) => { const pa = (Number(a["Precio"])||0)/(Number(a["m2"])||1); const pb = (Number(b["Precio"])||0)/(Number(b["m2"])||1); return pb-pa; });
+  else res.reverse(); // más recientes primero (orden inverso del sheet)
   return res;
 }
 
